@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GESUAS - DESAFIO DEV{% endblock %}
+
+{% block body %}
+<style>
+    * { font-family: Roboto; padding: 0; }
+    .container { display: flex; align-items: center; justify-content: center; margin: 0; padding: 0; }
+    .descricao-container { display: flex; flex-direction: column; justify-content: center; width: 70%; height: 100vh; }
+    .header { position: fixed; top: 0; padding-top: 3rem; }
+    .busca-nis-container { display: flex; justify-content: center; align-items: center; width: 30%; height: 100vh; }
+    .busca-nis { width: 24em; height: 28em; padding-top: 30px; padding-bottom: 20px; border-radius: 8px; box-shadow: 1px 1px 7px 1px #4b585d; }
+    .busca-nis-content { padding-left: 12%; padding-right: 12%; }
+    .busca-nis-title { text-align: center; margin-bottom: 2em; font-size: 1.5em; color: #231F20; }
+    label { font-size: 0.9em; color: #231F20; font-weight: normal; }
+
+</style>
+
+<div class="container">
+
+    <div class="descricao-container">
+        <header class="header">
+            <img src="{{ asset('assets/gesuas-logo-xs.png') }}" alt="Gesuas" height="80"/>
+        </header>
+        <section class="banner">
+            <img src="{{ asset('assets/form-img.svg') }}" alt="" height="600"/>
+            <h2>Boas vindas!</h2>
+            <p>Tenha acesso aos dados mais recentes e atualizados</p>
+        </section>
+    </div>
+
+    <aside class="busca-nis-container">
+
+        <form action="{{ path('cadastrar_cidadao') }}" method="post">
+            <h2>Cadastrar Cidadão</h2>
+            <label for="nome">Nome de Usuário:</label>
+            <input type="text" id="nome" name="nome" required placeholder="Insira o nome do Cidadão">
+            <button type="submit">Cadastrar</button>
+        </form>
+        
+        <form action="{{ path('pesquisar_cidadao') }}" method="post">
+            <h2>Pesquisar Cidadão</h2>
+            <label for="nis">NIS:</label>
+            <input type="text" id="nis" name="nis" required placeholder="Insira o NIS do Cidadão">
+            <button type="submit">Pesquisar</button>
+        </form>
+
+        {% if cidadao is defined %}
+            <div>
+                <h3>Detalhes do Cidadão:</h3>
+                <p>Nome: {{ cidadao.nome }}</p>
+                <p>NIS: {{ cidadao.nis }}</p>
+            </div>
+        {% elseif mensagem is defined %}
+            <h3>{{ mensagem }}<h3>
+        {% endif %}
+        
+    </aside>
+
+</div>
+
+{% endblock %}

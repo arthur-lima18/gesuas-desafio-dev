@@ -21,6 +21,10 @@ class CidadaoRepository extends ServiceEntityRepository
         parent::__construct($registry, Cidadao::class);
     }
 
+    public function buscarCidadaoPorNis(string $nis) : ?Cidadao
+    {
+        return $this->findOneBy(['nis' => $nis]);
+    }
 //    /**
 //     * @return Cidadao[] Returns an array of Cidadao objects
 //     */
