@@ -29,7 +29,7 @@ Execute o build e inicialize o container
 docker-compose up --build
 ```
 
-Abra um novo terminal e execute a instalação dos pacotes necessários
+Ainda que o container esteja rodando, a aplicação não funcionará e uma mensagem de erro será exibida ao acessá-la pela URL, pois faz-se necessário instalar as dependências do projeto utilizando o Composer. Assim, abra um novo terminal e execute a instalação dos pacotes necessários
 ```bash
 cd gesuas
 composer install
