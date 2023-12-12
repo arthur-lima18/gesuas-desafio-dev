@@ -5,7 +5,9 @@ Projeto desenvolvido com o objetivo de criar uma plataforma para cadastrar e bus
 
 Os Testes Unitários foram desenvolvidos e executados com PHPUnit.
 
+## Requisitos
 
+Você precisará ter instalado em sua máquina o [Docker](https://www.docker.com) e o [Composer](https://getcomposer.org).
 
 
 ## Instalação
@@ -54,7 +56,7 @@ php bin/phpunit
 
 ## Tecnologias Utilizadas
 
-PHP, Symfony, HTML, CSS, PHPUnit
+PHP, Symfony, HTML, CSS, PHPUnit, Docker, Composer
 
 
 ## Referências
@@ -64,4 +66,6 @@ PHP, Symfony, HTML, CSS, PHPUnit
  - [PHPUnit](https://phpunit.de)
  - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
  - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+ - [Docker](https://www.docker.com)
+ - [Composer](https://getcomposer.org)
  
