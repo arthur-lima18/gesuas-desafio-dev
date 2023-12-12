@@ -21,32 +21,11 @@ class CidadaoRepository extends ServiceEntityRepository
         parent::__construct($registry, Cidadao::class);
     }
 
+    /**
+     * @return Cidadao|null Retorna o objeto Cidadão ou nulo de acordo com a busca pelo NIS
+     */
     public function buscarCidadaoPorNis(string $nis) : ?Cidadao
     {
         return $this->findOneBy(['nis' => $nis]);
     }
-//    /**
-//     * @return Cidadao[] Returns an array of Cidadao objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Cidadao
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

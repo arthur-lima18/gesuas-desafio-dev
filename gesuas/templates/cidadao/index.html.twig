@@ -12,10 +12,12 @@
     .busca-nis-content { padding-left: 12%; padding-right: 12%; }
     .busca-nis-title { text-align: center; margin-bottom: 2em; font-size: 1.5em; color: #231F20; }
     label { font-size: 0.9em; color: #231F20; font-weight: normal; }
-    form { width: 24em; height: 8em; padding: 20px; border-radius: 8px; box-shadow: 1px 1px 7px 1px #4b585d; }
-    input { padding: 6px; border: 1px solid #007D83; border-radius: 4px; margin-right: 18px; }
-    button { padding: 8px; background-color: #00B5BD; border: none; border-radius: 4px; color: #D1D1D1; cursor: pointer; }
-    button:hover { background-color: #007D83; transition: background .5s; }
+    form { width: 24em; height: 8em; padding: 10px 40px; border-radius: 8px; box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.3); transition: all .5s; }
+    form:hover { box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.3); }
+    input { padding: 6px; border: 1px solid #007D83; border-radius: 4px; margin-right: 18px; width: 70%; }
+    .campo-container { display: flex; flex-direction: row; justify-content: space-between; }
+    button { padding: 8px; background-color: #00B5BD; border: none; border-radius: 4px; color: #D1D1D1; cursor: pointer; width: 30%; transition: background .5s;}
+    button:hover { background-color: #007D83; }
     .mensagem { width: 24em; padding: 12px; border-radius: 8px; color: #D1D1D1; text-align: center;}
     .mensagem-sucesso {  height: 8em; border: 2px solid #157A3A;  background-color: #2CC457; }
     .mensagem-erro { height: 4em; border: 2px solid #741212; background-color: #D03030; }
@@ -38,26 +40,30 @@
     <aside class="busca-nis-container">
 
         <form action="{{ path('cadastrar_cidadao') }}" method="post">
-            <h2>Cadastrar Cidadão</h2>
-            <input type="text" id="nome" name="nome" required placeholder="Insira o nome do Cidadão">
-            <button type="submit">Cadastrar</button>
+            <h3>Cadastrar Cidadão</h3>
+            <div class="campo-container">
+                <input type="text" id="nome" name="nome" required placeholder="Insira o nome do Cidadão">
+                <button type="submit">Cadastrar</button>
+            </div>
         </form>
         
         <form action="{{ path('pesquisar_cidadao') }}" method="post">
-            <h2>Pesquisar Cidadão</h2>
-            <input type="text" id="nis" name="nis" required placeholder="Insira o NIS do Cidadão">
-            <button type="submit">Pesquisar</button>
+            <h3>Pesquisar Cidadão</h3>
+            <div class="campo-container">
+                <input type="text" id="nis" name="nis" required placeholder="Insira o NIS do Cidadão" minlength="11" maxlength="11">
+                <button type="submit">Pesquisar</button>
+            </div>
         </form>
 
         {% if cidadao is defined %}
             <div class="mensagem mensagem-sucesso">
                 <h3>Detalhes do Cidadão</h3>
-                <p>Nome: {{ cidadao.nome }}</p>
-                <p>NIS: {{ cidadao.nis }}</p>
+                <h4>Nome: {{ cidadao.nome }}</h4>
+                <h4>NIS: {{ cidadao.nis }}</h4>
             </div>
         {% elseif mensagem is defined %}
             <div class="mensagem mensagem-erro">
-                <h3>{{ mensagem }}<h3>
+                <h4>{{ mensagem }}<h4>
             </div>
         {% endif %}
         

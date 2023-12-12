@@ -30,8 +30,16 @@ class CidadaoController extends AbstractController
     #[Route('/cadastrar-cidadao', name: 'cadastrar_cidadao', methods: 'POST')]
     public function cadastrarCidadao(EntityManagerInterface $entityManager, Request $req) : Response
     {
+        $nome = $req->request->get('nome');
+
+        if(!$nome)
+        {
+            return $this->render('cidadao/index.html.twig', [
+                'mensagem' => "Não foi possível finalizar o cadastro."
+            ]);
+        }
+
         try {
-            $nome = $req->request->get('nome');
             
             $nis = $this->gerarNisService->gerarNisUnico();
             
@@ -56,6 +64,12 @@ class CidadaoController extends AbstractController
     public function buscarCidadao(Request $req, CidadaoRepository $cidadaoRepository) : Response
     {
         $nis = $req->request->get('nis');
+
+        if(strlen($nis) != 11) {
+            return $this->render('cidadao/index.html.twig', [
+                'mensagem' => "Você deve inserir um NIS válido de 11 dígitos"
+            ]);
+        }
 
         $cidadao = $cidadaoRepository->buscarCidadaoPorNis($nis);
 

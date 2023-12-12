@@ -13,21 +13,25 @@ class GerarNisService
         $this->cidadaoRepository = $cidadaoRepository;
     }
 
-    public function gerarNisUnico()
+    /**
+     * @return string Retorna o NIS único gerado
+     */
+    public function gerarNisUnico() : string
     {
         do {
             
             $nis = $this->gerarNis();
             $existente = $this->cidadaoRepository->buscarCidadaoPorNis($nis);
 
-            if($existente) dd($existente);
-
         } while($existente);
 
         return $nis;
     }
 
-    private function gerarNis()
+    /**
+     * @return string Retorna o NIS gerado
+     */
+    private function gerarNis() : string
     {
         $nis = "";
 
