@@ -35,7 +35,7 @@ cd gesuas
 composer install
 ```
 
-Após isso o sistema estará rodando na sua máquina em http://localhost:8741/ ou na porta indicada pelo Docker.
+Após isso o sistema estará rodando e funcionando na sua máquina em http://localhost:8741/ ou na porta indicada pelo Docker.
 ## Testes Unitários
 
 Para a realização dos Testes Unitários, siga os seguintes passos:
